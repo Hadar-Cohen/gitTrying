@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title></title>
+
+    <link href="login_style_sheet.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#pForm").submit(submit);
+
+        });
+
+        function submit() {
+            confirmUser();
+            return false;
+        }
+        function confirmUser() {
+            let email = $('#emailTB').val();
+            let pass = $('#passwordTB').val();
+            let api = "../api/Users?email=" + email + "&password=" + pass;
+            ajaxCall("GET", api, "", getLoginSuccessCB, getLoginErrorCB);
+        }
+
+        function getLoginSuccessCB(user) {
+            storeToLocalStorage(user);
+            let tmp = JSON.parse(localStorage["user"]);
+            userName = tmp.FirstName + " " + tmp.LastName;
+            swal("Welcome!", userName, "success");
+            setTimeout(function () { location.href = 'insert_signup.html'; }, 3000);
+        }
+
+        function storeToLocalStorage(user) {
+            let userToStore = {
+                Id: user.Id,
+                FirstName: user.FirstName,
+                LastName: user.LastName
+                //Email: user.Email,
+                //PhoneNum: user.PhoneNum,
+                //Gender: user.Gender,
+                //YearOfBirth: user.YearOfBirth,
+                //Genre: user.Genre,
+                //Address: user.Address
+            }
+            localStorage.setItem("user", JSON.stringify(userToStore));
+        }
+
+        function getLoginErrorCB(err) {
+            if (err.status == "404")
+                alert("got 404: " + err.responseJSON.Message);
+            else
+                alert(err.status);
+        }
+    </script>
+</head>
+<body>
+    <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>
+    <div class="container">
+        <form id="pForm">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="emailTB"><span class="red-star">★ </span> Email </label>
+                <input type="text" class="form-control" placeholder="Enter the email" id="emailTB"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                       oninvalid="this.setCustomValidity('Format should be with @')"
+                       oninput="this.setCustomValidity('')" required />
+            </div>
+            <div class="form-group">
+                <label for="passwordTB"><span class="red-star">★ </span> Password</label>
+                <input type="password" class="form-control" placeholder="Enter the password" id="passwordTB"
+                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$"
+                       oninvalid="this.setCustomValidity('Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters')"
+                       oninput="this.setCustomValidity('')" required />
+            </div>
+            <input id="submitBTN" type="submit" value="Submit " />
+        </form>
+    </div>
+</body>
+</html >

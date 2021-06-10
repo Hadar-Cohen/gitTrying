@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+
+    </script>
+
+    <link href="myStyle.css" rel="stylesheet" />
+
+    <script src="../Scripts/ajaxCalls.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            imagePath = "https://image.tmdb.org/t/p/w500/";
+
+            if (localStorage.user != null) {
+                user = JSON.parse(localStorage["user"]);
+                $("#userName").text("Hello " + user.FirstName + " " + user.LastName);
+                document.getElementById("login").style.visibility = "hidden";
+                document.getElementById("exit").style.visibility = "visibility";
+            }
+            else {
+                document.getElementById("login").style.visibility = "visibility";
+                document.getElementById("exit").style.visibility = "hidden";
+            }
+
+            $("#phView").html("");
+            str = "<select id='series' onchange=showEpisode(this)>";
+            str += "<option>select</option>";
+            userId = user.Id;
+            let api = "../api/Totals?UserId=" + userId;
+            ajaxCall("GET", api, "", getSeriesSuccessCB, getSeriesErrorCB);
+        });
+
+
+        function getSeriesSuccessCB(seriesNames) {
+            for (const s of seriesNames) {
+                str += "<option value=" + s + ">" + s + "</option>";
+            }
+            str += "</select>";
+            $("#phView").html(str);
+        }
+        function getSeriesErrorCB(err) {
+            alert("Error -cant get the Series names")
+        }
+
+        function showEpisode(series) {
+            var selectedText = series.options[series.selectedIndex].innerHTML;
+            episodesList = "<tr>";
+            console.log(selectedText);
+            let api = "../api/Episodes?SeriesName=" + selectedText;
+            ajaxCall("GET", api, "", getEpisodesSuccessCB, getEpisodesErrorCB);
+        }
+        function getEpisodesSuccessCB(episodes) {
+            console.log(episodes);
+            var i = 0;
+            while (i < episodes.length) {
+                episodesList += "<td class='card2' style='width:800px height: 700px'><center><b><p id='episodeTitle'>" + episodes[i].SeriesName + " season " + episodes[i].SeasonNum + "</p></b></center><img class= 'imgCard' src='" + episodes[i].ImageURL + "'>";
+                episodesList += "<div id='episodeBlock'><br><b>" + episodes[i].EpisodeName + "</b></br > " + episodes[i].AirDate + "</br></br><div id='episodeOverView'>" + episodes[i].Overview + "</div></div></td>";
+
+                if ((i + 1) % 4 == 0)
+                    episodesList += "</tr>";
+                i++;
+                if ((i + 1) % 4 == 1)
+                    episodesList += "<tr>";
+
+            }
+            episodesList += "</tr>";
+            $("#episodesView").html(episodesList);
+
+        }
+        function getEpisodesErrorCB(err) {
+            console.log(err);
+        }
+        function exit() {
+            localStorage.clear();
+            document.location = 'insert_signup.html';
+        }
+    </script>
+
+    <script src="../Scripts/view.js"></script>
+</head>
+<body>
+    <div id="navbar">
+        <div class="BTN">
+            <button id="login" onclick="document.location='login.html'">login</button>
+            <button id="exit" onclick="exit()">exit</button>
+            <label id="userName"> </label>
+        </div>
+
+    </div>
+    <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>
+    <div id="title"> My Series</div>
+    <div id="phView"></div>
+    <table id="episodesView"></table>
+</body>
+</html>
