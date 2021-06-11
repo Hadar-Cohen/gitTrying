@@ -22,40 +22,6 @@
 
     <style>
 
- /*       .navbar {
-            border: 1px solid #ccc;
-            background-color: #eac8af;
-        }
-
-        .navbar-toggle .icon-bar {
-            background-color: #333;
-        }
-
-        .navbar-nav > li {
-            line-height: 50px;
-            position: relative;
-            color: black;
-        }
-
-            .logo,
-            .navbar-nav > li > .btn {
-                margin: 0 15px;
-            }
-
-        @media (min-width: 767px) {
-            .navbar-search-form {
-                position: absolute;
-                left: 0;
-                right: 0;
-                margin: auto;
-                width: 100%;
-                float: none;
-                text-align: center;
-                padding: 8px 0;
-            }
-        }*/
-     
- 
 </style>
 
 
@@ -65,7 +31,7 @@
     <!--////////////////////////////////////////////////signUp///////////////////////////////////////////-->
     <script>
         let searchInput = 'search_input';
-        function signUpClick() {
+       function signUpClick() {
             document.getElementById('modalBox').style.display = 'block';
 
             $("#pForm").submit(submit); // bind the submit event to a function called addUser
@@ -355,9 +321,9 @@
                 <a class="navbar-brand" href="#">The Movie H & H</a>
             </div>
             <ul class="nav navbar-nav justify-content-between">
-                <li><a class="toblack" href="insert_signup.html">Home</a></li>
-                <li><a class="toblack" href="#">Admin</a></li>
-                <li><a class="toblack" href="view.html">View</a></li>
+                <li><a id="toblack" href="insert_signup.html">Home</a></li>
+                <li><a id="toblack" href="#">Admin</a></li>
+                <li><a id="toblack" href="view.html">View</a></li>
 
             </ul>
             <!--<ul class="nav navbar-nav">
@@ -371,9 +337,9 @@
                 </li>
             </ul>-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a id=""><span class="glyphicon glyphicon-user singupc toblack" id="signUp"></span> Sign Up</a></li>
-                <li><a id="" href="login.html"><span class="glyphicon glyphicon-log-in toblack" id="login"></span> Login</a></li>
-                <li><a id="" href="#"><span class="glyphicon glyphicon-log-in toblack" id="exit" onclick="exitFunc()"></span> Exit</a></li>
+                <li><a onclick="signUpClick()" id="toblack_singup"><span class="glyphicon glyphicon-user singupc" id="signUp"></span> Sign Up</a></li>
+                <li><a id="toblack" href="login.html"><span class="glyphicon glyphicon-log-in " id="login"></span> Login</a></li>
+                <li><a id="toblack" href="#"><span class="glyphicon glyphicon-log-in " id="exit" onclick="exitFunc()"></span> Exit</a></li>
             </ul>
         </div>
     </nav>

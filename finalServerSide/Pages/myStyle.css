@@ -463,12 +463,18 @@ p{
         color: white;
         border: 2px solid white;
     }
-
 #toblack {
     color: black;
     font-size: 15px;
 }
+#toblack_singup {
+    color: black ;
+    font-size: 15px;
+}
 
-    #toblack:hover {
-        color: white;
-    }
+#toblack:hover {
+    color: white;
+}
+#toblack_singup:hover {
+    color: white;
+}
