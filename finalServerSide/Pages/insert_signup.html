@@ -19,6 +19,49 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="myStyle.css" rel="stylesheet" />
     <script src="../Scripts/insertScript.js"></script>
+
+    <style>
+
+ /*       .navbar {
+            border: 1px solid #ccc;
+            background-color: #eac8af;
+        }
+
+        .navbar-toggle .icon-bar {
+            background-color: #333;
+        }
+
+        .navbar-nav > li {
+            line-height: 50px;
+            position: relative;
+            color: black;
+        }
+
+            .logo,
+            .navbar-nav > li > .btn {
+                margin: 0 15px;
+            }
+
+        @media (min-width: 767px) {
+            .navbar-search-form {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 100%;
+                float: none;
+                text-align: center;
+                padding: 8px 0;
+            }
+        }*/
+     
+ 
+</style>
+
+
+
+
+
     <!--////////////////////////////////////////////////signUp///////////////////////////////////////////-->
     <script>
         let searchInput = 'search_input';
@@ -305,24 +348,19 @@
 
 </head>
 <body>
-    <!--<div id="navbar">
-        <div class="BTN">
-            <button id="login" onclick="document.location='login.html'">Log in</button>
-            <button id="signUp" onclick="signUpClick()">Sign up</button>
-            <button id="exit" onclick="exitFunc()">exit</button>
-            <label id="userName"> </label>
-        </div>
-    </div>-->
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">The Movie H & H</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="insert_signup.html">Home</a></li>
-                <li><a href="#">Admin</a></li>
-                <li><a href="view.html">View</a></li>
+            <ul class="nav navbar-nav justify-content-between">
+                <li><a id="toblack" href="insert_signup.html">Home</a></li>
+                <li><a id="toblack" href="#">Admin</a></li>
+                <li><a id="toblack" href="view.html">View</a></li>
+
+            </ul>
+            <!--<ul class="nav navbar-nav">
                 <li>
                     <input type="text" id="tvShowName" />
                 </li>
@@ -331,14 +369,15 @@
                         <i class="glyphicon glyphicon-search"></i>
                     </button>
                 </li>
-            </ul>
+            </ul>-->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user" onclick="signUpClick()" id="signUp"></span> Sign Up</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in" id="login"></span> Login</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in" id="exit" onclick="exitFunc()"></span> Exit</a></li>
+                <li><a id="toblack"><span class="glyphicon glyphicon-user singupc" onclick="signUpClick()" id="signUp"></span> Sign Up</a></li>
+                <li><a id="toblack" href="login.html"><span class="glyphicon glyphicon-log-in" id="login"></span> Login</a></li>
+                <li><a id="toblack" href="#"><span class="glyphicon glyphicon-log-in" id="exit" onclick="exitFunc()"></span> Exit</a></li>
             </ul>
         </div>
     </nav>
+    
 
     <div id="modalBox" class="modal">
         <span onclick="document.getElementById('modalBox').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -434,11 +473,11 @@
         </form>
     </div>
 
-   <!-- <button id="view" onclick="document.location='view.html'">VIEW</button>-->
+    <!-- <button id="view" onclick="document.location='view.html'">VIEW</button>-->
 
     <div class="header">
-        <!--<input type="text" id="tvShowName" />
-        <button id="getTV">Get TV Show</button>-->
+        <input type="text" id="tvShowName" placeholder="I want to see..." />
+        <button id="getTV">Get TV Show</button>
         <div id="ph"></div>
     </div>
 

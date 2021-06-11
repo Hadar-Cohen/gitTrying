@@ -16,21 +16,27 @@
 #phView{
     margin:0 auto;
 }
-/*#getTV {
+#getTV {
+    font-size: 20px;
+    height: 40px;
+    top: 76px;
+    border-radius: 10px;
+    float: right;
+    justify-content: center;
     background-color: #e6ebff;
     color: black;
     border: 2px solid black;
-    font-size: 20px;
-    height: 40px;
-    top: 40px;
-    border-radius: 10px;
     position: absolute;
 }
+
+
+
+
 #getTV:hover {
     background-color: #1e212d;
     color: white;
     border: 2px solid white;
-}*/
+}
 
 #view, #home_page {
     background-color: #e6ebff;
@@ -68,6 +74,43 @@ body {
 #Episodes > img {
     height: 70px;
     margin: auto;
+}
+.navbar {
+    border: 1px solid #ccc;
+    background-color: #b3c0f2;
+    
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #333;
+}
+
+.navbar-nav > li {
+    line-height: 50px;
+    position: relative;
+    color: black;
+}
+
+    .logo,
+    .navbar-nav > li > .btn {
+        margin: 0 15px;
+    }
+
+@media (min-width: 767px) {
+    .navbar-search-form {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        float: none;
+        text-align: center;
+        padding: 8px 0;
+    }
+}
+
+.navbar-nav {
+    color: black;
 }
 
 #tvShowName {
@@ -419,4 +462,13 @@ p{
         background-color: #1e212d;
         color: white;
         border: 2px solid white;
+    }
+
+#toblack {
+    color: black;
+    font-size: 15px;
+}
+
+    #toblack:hover {
+        color: white;
     }

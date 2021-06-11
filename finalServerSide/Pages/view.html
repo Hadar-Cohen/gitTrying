@@ -8,7 +8,7 @@
             crossorigin="anonymous">
 
     </script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="myStyle.css" rel="stylesheet" />
 
     <script src="../Scripts/ajaxCalls.js"></script>
@@ -86,15 +86,29 @@
     <script src="../Scripts/view.js"></script>
 </head>
 <body>
-    <div id="navbar">
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">The Movie H & H</a>
+            </div>
+            <ul class="nav navbar-nav justify-content-between">
+                <li><a id="tobleck" href="insert_signup.html">Home</a></li> 
+            </ul>
+         
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="tobleck" href="#"><span class="glyphicon glyphicon-log-in" id="exit" onclick="exitFunc()"></span> Exit</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--<div id="navbar">
         <div class="BTN">
             <button id="login" onclick="document.location='login.html'">login</button>
             <button id="exit" onclick="exit()">exit</button>
             <label id="userName"> </label>
-        </div>
+        </div>-->
 
-    </div>
-    <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>
+    <<!--/div>
+    <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>-->
     <div id="title"> My Series</div>
     <div id="phView"></div>
     <table id="episodesView"></table>

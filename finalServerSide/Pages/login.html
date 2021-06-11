@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title></title>
-
+    <link href="myStyle.css" rel="stylesheet" />
     <link href="login_style_sheet.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
- 
+
     <script src="../Scripts/ajaxCalls.js"></script>
     <script>
 
@@ -65,7 +65,18 @@
     </script>
 </head>
 <body>
-    <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">The Movie H & H</a>
+            </div>
+            <ul class="nav navbar-nav justify-content-between">
+                <li><a id="tobleck" href="insert_signup.html">Home</a></li>
+            </ul>
+            
+        </div>
+    </nav>
+   <!-- <button id="home_page" onclick="document.location='insert_signup.html'">Home</button>-->
     <div class="container">
         <form id="pForm">
             <h2>Login</h2>
